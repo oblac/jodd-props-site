@@ -12,7 +12,7 @@ The purpose of **Jodd Props** __is not to provide the ultimate configuration sol
 
 ### Features
 
-_Props_ configuration is stored in text file\(s\), with default extension `.props`. Still, _Props_ is compatible with Java properties and knows to load `*.properties` as well. Here is screenshot of a `props` file:
+Jodd Props configuration is stored in text file\(s\), with default extension `.props`. Still, _Props_ is compatible with Java properties and knows to load `*.properties` as well. Here is screenshot of a `props` file:
 
 ![](.gitbook/assets/image%20%281%29.png)
 

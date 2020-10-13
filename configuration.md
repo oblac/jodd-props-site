@@ -1,6 +1,6 @@
 # Configuration
 
-_Props_ behavior can be fine-tuned using the following configuration settings:
+**Jodd Props** behavior can be fine-tuned using the following configuration settings:
 
 ### escapeNewLineValue
 
