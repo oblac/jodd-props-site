@@ -1,2 +1,2 @@
-# jodd-props-site
-Jodd Props site
+# Props
+
