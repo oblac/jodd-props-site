@@ -8,13 +8,13 @@ description: Super properties
 
 **Jodd Props** is compatible with Java properties.
 
-The purpose of **Jodd Props** __is not to provide the ultimate configuration solution, but to _replace_ Java properties with a _similar_ but better alternative. If you are already using Java properties in your application, or just want a familiar and friendly configuration, consider __switching to **Jodd Props**.
+The purpose of **Jodd Props** __ is not to provide the ultimate configuration solution, but to _replace_ Java properties with a _similar_ but better alternative. If you are already using Java properties in your application, or just want a familiar and friendly configuration, consider __ switching to **Jodd Props**.
 
 ### Features
 
-Jodd Props configuration is stored in text file\(s\), with default extension `.props`. Still, _Props_ is compatible with Java properties and knows to load `*.properties` as well. Here is screenshot of a `props` file:
+Jodd Props configuration is stored in text file(s), with default extension `.props`. Still, _Props_ is compatible with Java properties and knows to load `*.properties` as well. Here is screenshot of a `props` file:
 
-![](.gitbook/assets/image%20%281%29.png)
+![](<.gitbook/assets/image (1).png>)
 
 #### UTF-8 encoding
 
@@ -26,23 +26,23 @@ Leading and trailing spaces will be trimmed from section names and property name
 
 #### Assignment of values
 
-Either equal sign \(`=`\) or colon \(`:`\) are used to assign property values.
+Either equal sign (`=`) or colon (`:`) are used to assign property values.
 
 #### Quick appended values
 
-Use `+=` to append values \(separated by comma\) of properties with the same name.
+Use `+=` to append values (separated by comma) of properties with the same name.
 
 #### Comments
 
-Comments begin with either a semicolon \(`;`\), or a sharp sign \(`#`\) and extend to the end of a line. It doesn't have to be the first character of a line.
+Comments begin with either a semicolon (`;`), or a sharp sign (`#`) and extend to the end of a line. It doesn't have to be the first character of a line.
 
 #### Escaping
 
-The backslash \(`\`\) escapes the next character \(e.g., `\#` is a literal `#`, `\\` is a literal `\`\).
+The backslash (`\`) escapes the next character (e.g., `\#` is a literal `#`, `\\` is a literal `\`).
 
 #### Multi-line values
 
-If the last character of a line is backslash \(`\`\), the value is continued on the next line with a new line character included.
+If the last character of a line is backslash (`\`), the value is continued on the next line with a new line character included.
 
 #### Special characters
 
@@ -73,7 +73,7 @@ Section name is enclosed between `[` and `]`. Properties following a section def
 
 The following example:
 
-```text
+```
 [users.data]
 weight = 49.5
 height = 87.7
@@ -84,7 +84,7 @@ comment=this is base property
 
 is identical to:
 
-```text
+```
 users.data.weight = 49.5
 users.data.height = 87.7
 users.data.age = 63
@@ -105,7 +105,7 @@ Profiles can be considered as 'different views' or 'snapshots' of the same prope
 
 Example:
 
-```text
+```
 db.port=3086
 
 db.url<develop>=localhost
@@ -115,11 +115,11 @@ db.url<deploy>=192.168.1.101
 db.username<deploy>=app2499
 ```
 
-In this example 3 keys are defined; two keys have different values in two profiles \(`develop` and `deploy`\) and have no base value.
+In this example 3 keys are defined; two keys have different values in two profiles (`develop` and `deploy`) and have no base value.
 
 Since sections are just a prefix definition and since profile can be located anywhere in the key name, the section name can define profile definition as well! The above example can be written as:
 
-```text
+```
 db.port=3086
 
 [db<develop>]
@@ -138,9 +138,9 @@ When looking up for a value, it is possible to specify which profiles are active
     String user = props.getValue("db.username", "develop");
 ```
 
-More than one profile can be specified at a time. The order of specified profiles is important! When one key is defined in more than one active profile, the FIRST value \(of first matched profile\) is returned. {: .attn}
+More than one profile can be specified at a time. The order of specified profiles is important! When one key is defined in more than one active profile, the FIRST value (of first matched profile) is returned. {: .attn}
 
-It is also possible to lookup only for base properties \(ignoring the profiles\) - using `getBaseValue()` method. Base properties are those that don't belong to any profile.
+It is also possible to lookup only for base properties (ignoring the profiles) - using `getBaseValue()` method. Base properties are those that don't belong to any profile.
 
 #### Default active profiles
 
@@ -148,9 +148,9 @@ Usually, only one set of profiles is active during the application's lifetime. I
 
 The active profiles are the default when looking for a property using method `getValue(String)`.
 
-Active profiles can be defined in the `props` files - this way the configuration set can be changed \(i.e. active profiles can be modified\) without the need to recompile the code. Active profiles are defined under the special base key named `@profiles`. Example:
+Active profiles can be defined in the `props` files - this way the configuration set can be changed (i.e. active profiles can be modified) without the need to recompile the code. Active profiles are defined under the special base key named `@profiles`. Example:
 
-```text
+```
 key1=hello
 key1<one>=Hi!
 
@@ -169,9 +169,9 @@ Active profiles can be set from Java, too, using the method: `setActiveProfiles(
 
 #### Inner profiles
 
-There are situations where two or more profiles share the most of the configuration and only a few properties are different \(or: specific\) for one profile \(i.e. configuration\). To avoid repeating of all properties for each profile, it is possible to define properties assigned to inner profiles only for those differences. _Props_ will first lookup keys in inner profiles, then go up to the base level. Example:
+There are situations where two or more profiles share the most of the configuration and only a few properties are different (or: specific) for one profile (i.e. configuration). To avoid repeating of all properties for each profile, it is possible to define properties assigned to inner profiles only for those differences. _Props_ will first lookup keys in inner profiles, then go up to the base level. Example:
 
-```text
+```
 key1<one>=Hi!
 key2<one>=...
 ....
@@ -180,7 +180,7 @@ key100<one>=...
 key1<one.two>=Hola!
 ```
 
-This example defines two profiles. The first one is named `one` and contains 100 properties. The second profile is an inner property named `one.two`. It contains only 1 property \(`key1`\) - but all properties from its upper profile are available! What happens when Java code calls the following: `props.getValue("key1", "one.two")`? _Props_ will:
+This example defines two profiles. The first one is named `one` and contains 100 properties. The second profile is an inner property named `one.two`. It contains only 1 property (`key1`) - but all properties from its upper profile are available! What happens when Java code calls the following: `props.getValue("key1", "one.two")`? _Props_ will:
 
 * lookup for property in inner profile `one.two`
 * if a value is not found, _Props_ will check upper profile: `one`
@@ -192,7 +192,7 @@ There can be any levels of inner profiles.
 
 The biggest _Props_ strength are macros. Macro is a reference to a value of some other key. Macros are enclosed between `${` and `}`. Here is a simple example:
 
-```text
+```
 key1=Something ${foo}
 ...
 foo=nice
@@ -202,7 +202,7 @@ Value of `key1` is `Something nice`. Macros can refer to any existing property k
 
 Nested macros are also supported. Example:
 
-```text
+```
 key1=!!${key${key3}}!!
 key3=2
 key2=foo
@@ -216,7 +216,7 @@ Macros are always resolved using the currently active or provided profile. The v
 
 This behavior is controlled with flag: `useActiveProfilesWhenResolvingMacros`. Here is an example:
 
-```text
+```
 root=/app
 root<foo>=/foo
 data.path=${root}/data
@@ -224,11 +224,11 @@ data.path=${root}/data
 
 What is the value of `data.path` when `foo` profile is set as active? Since `foo` is active, `root` value becomes `/foo`, therefore the `data.path` is going to be set to `/foo/data` value.
 
-If we turn off profiles \(and use only base propertes\), the `data.path` value is going to be `/app/data`.
+If we turn off profiles (and use only base propertes), the `data.path` value is going to be `/app/data`.
 
 It is also possible to explicitly set macro's profile:
 
-```text
+```
 root=/app
 root<foo>=/foo
 data.path=${root<foo>}/data
@@ -240,7 +240,7 @@ In this example, `root` macro will always use the `foo` profile regardless of th
 
 When enabled, multilines values may be defined with triple-quotes. Everything between is considered as a value. Example:
 
-```text
+```
 email.body='''
     Hello $n,
 
@@ -252,9 +252,9 @@ Note that multiline values are **NOT** trimmed! Therefore, the value from the ex
 
 ### Iteration and keys order
 
-_Props_ keeps your keys in order! It is possible to iterate all _Props_ keys in the same order as they are listed in the props file\(s\). So instead doing this:
+_Props_ keeps your keys in order! It is possible to iterate all _Props_ keys in the same order as they are listed in the props file(s). So instead doing this:
 
-```text
+```
 foo.1=value1
 foo.2=value2
 ...
@@ -286,7 +286,7 @@ Due to profiles usage, one key may be defined on many places in props file. For 
 
 Imagine you have certain number of properties that is, by default, the same for some number of different categories. For example:
 
-```text
+```
 com.jodd.action1=value1
 com.jodd.action2=value2
 ...
@@ -298,7 +298,7 @@ net.jodd.... # etc
 
 _Props_ allows you to use _copy operator_: `<=` to minimize duplication of the props. Above props can be written as:
 
-```text
+```
 [actions]
 action1=value1
 action2=value2
@@ -318,11 +318,10 @@ This example shows three different ways how to use copy operator, without a sect
 
 Remember that copied values are set as macros, so all above copied properties are identical to:
 
-```text
+```
 org.jodd.action1=${actions.action1}
 com.jodd.action1=${actions.action1}
 ....
 ```
 
 All rules for resolving macros applies.
-
